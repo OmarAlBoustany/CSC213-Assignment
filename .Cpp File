@@ -1,0 +1,62 @@
+#include <iostream>
+#include "Header.h"
+using namespace std;
+
+Animal::Animal(int A, int N) {
+	cout << endl << "Animal Created";
+	Age = A;
+	name = N;
+}
+
+Animal::~Animal() {
+	cout << endl << "Animal Destroyed";
+}
+
+Dog::Dog(int A, int N, int B) : Animal(A, N) {
+	cout << endl << "Dog Created";
+	Breed = B;
+}
+Dog::~Dog() {
+	cout << endl << "Dog Destroyed";
+}
+Cat::Cat(int A, int N, int C, int PawS) : Animal(A, N) {
+	cout << endl << "Cat Created";
+	Color = C;
+	PawSize = PawS;
+}
+
+Cat::~Cat() {
+	cout << endl << "Cat Destroyed";
+}
+Fish::Fish(int A, int N, int SS, int GillC):Animal(A, N) {
+	cout << endl << "Fish Created";
+	SwimSpeed = SS;
+	GillCapacity = GillC;
+}
+Fish::~Fish() {
+	cout << endl << "Fish Destroyed";
+}
+
+void printAnimal(Animal* a) {
+	a->print();
+}
+
+int main() {
+	Animal* arrayAnimal[3];
+
+	Dog d = Dog(2, 1, 4);
+	Cat c = Cat(5, 1, 2, 13);
+	Fish f = Fish(3, 2, 5, 9);
+
+	arrayAnimal[0] = &d;
+	arrayAnimal[1] = &c;
+	arrayAnimal[2] = &f;
+	
+	for (int i = 0; i < 3; i++) {
+		printAnimal(arrayAnimal[i]);
+	}
+	d.getOwner(), c.getOwner(), f.getOwner();
+	
+
+	return 0;
+}
