@@ -1,0 +1,68 @@
+#ifndef HEADER_H
+#define HEADER_H
+#include <iostream>
+using namespace std;
+
+class Animal {
+private:
+	int Age;
+	int name;
+
+public:
+	Animal(int, int);
+	~Animal();
+
+	virtual void print() {
+		cout << endl << "Animal Print";
+	}
+
+	virtual void getOwner() = 0;
+};
+
+class Dog : public Animal {
+private:
+	int Breed;
+public:
+	Dog(int, int, int);
+	~Dog();
+
+	void print() {
+		cout << endl << "Dog Print";
+		Animal::print();
+	}
+	virtual void getOwner() {
+		cout << endl << "Owner: Dog.";
+	}
+};
+
+class Cat : public Animal {
+private:
+	int Color;
+	int PawSize;
+
+public:
+	Cat(int, int, int , int);
+	~Cat();
+
+	void print() {
+		cout << endl << "Cat Print";
+		Animal::print();
+	}
+	virtual void getOwner() {
+		cout << endl << "Owner: Cat.";
+	}
+};
+
+class Fish : public Animal {
+private:
+	int SwimSpeed;
+	int GillCapacity;
+public:
+	Fish(int, int, int, int);
+	~Fish();
+
+	virtual void getOwner() {
+		cout << endl << "Owner: Fish.";
+	}
+};
+#endif
